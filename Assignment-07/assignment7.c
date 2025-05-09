@@ -1,40 +1,48 @@
 #include <stdio.h>
+#include <math.h>
 
+float calculate_det(int a, int b, int c );
+void print_solutions(int a, int b, int c);
 
-int main(void)
-{
-  //initialize vars and get their values
-  float a,b,c,x;
-  printf("Enter the value of variable \'A\': ");
-  scanf("%f", &a);
-  printf("Enter the value of variable \'B\': ");
-  scanf("%f", &b);
-  printf("Enter the value of variable \'C\': ");
-  scanf("%f", &c);
-
-  //start doing the math
-  float solution1, solution2;
-  solution1 = (-b + sqrt((b*b)-(4*a*c)))/(2*a);
-  solution2 = (-b - sqrt((b*b)-(4*a*c)))/(2*a);
-
-  //plug the solution back into the equation and check that it's correct: 0 = ax^2 + bx + c
-  if (((a*(solution1*solution1)) + (b*solution1) + c) == 0) 
-  {
-  	printf("The solution using the '+' operator is: %f\n", solution1);
+int main(int argc, char** argv){
+  int a, b, c;
+  while(1){
+    printf("Enter the value of variable 'A': ");
+    scanf("%d", &a);
+    if(a==0){
+      printf("A cannot be zero");
+      continue;
+    }else{
+      break;
+    }
   }
-  else
-  {
-  	printf("The solution using the '+' operator is: %f, but you might want to double-check that...\n", solution1);
-  }
-  
-  if (((a*(solution2*solution2)) + (b*solution2) + c) == 0) 
-  {
-  	printf("[The solution using the '-' operator is: %f", solution2);
-  }
-  else
-  {
-  	printf("The solution using the '-' operator is: %f, but you might want to double check that...\n", solution2);
-  }
+  printf("Enter the value of variable 'B': ");
+  scanf("%d", &b);
 
+  printf("Enter the value of variable 'C': ");
+  scanf("%d", &c);
+
+  print_solutions(a, b, c);
   return 0;
+}
+
+float calculate_det(int a, int b, int c){
+  return (float)((b*b)-4*a*c);
+}
+
+void print_solutions(int a, int b, int c){
+  float det, solution1, solution2;
+  det= calculate_det(a,b,c);
+  if (det == 0){
+    solution1 = -b/(2*a);
+    printf("The solution is: %.4f", solution1);
+  }else if (det > 0){
+    solution1 = (-b+sqrt(det))/(2*a);
+    solution2 = (-b-sqrt(det))/(2*a);
+    printf("The solution using the '+' operator is: %.4f \n", solution1);
+    printf("The solution using the '-' operator is: %.4f \n", solution2);
+  }else{
+    printf("No solutions in R because %.4f < 0",det);
+  }
+  return;
 }
