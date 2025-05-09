@@ -1,23 +1,26 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
-int main(void)
-{
-  
-  //initialize our vars and get values for them
-  int numerator, denominator;
+int main(int argc, char** argv){
+  int num, denom;
+  div_t result;
   printf("Enter a numerator: ");
-  scanf("%d", &numerator);
+  scanf("%d",&num);
   printf("Enter a denominator: ");
-  scanf("%d", &denominator);
+  scanf("%d", &denom);
+  
+  if (denom == 0){
+    printf("Cannot divide by zero");
+    exit(1);
+  }  
+  
+  result = div(num, denom);
 
-  if (numerator % denominator == 0)
-  {
-  	printf("There is NOT a remainder!");
-  }
-  else
-  {
-  	printf("There is a remainder!");
+  if(result.rem == 0){
+    printf("There is NOT a remainder! \n");
+  }else{
+    printf("There is a remainder \n");
   }
 
   return 0;
