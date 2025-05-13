@@ -1,43 +1,33 @@
 #include <stdio.h>
 
-
-int main(void)
-{
+int main(int argc, char** argv){
+  int x, quot;
+  printf("Enter a number between 1 and 499: ");
   
-  int input;
-  //ask user for number between 1 - 500
-
-  printf("Enter a number between 1 and 500: ");
-  scanf("%d", &input);
-
-  if (input >= 0 && input <= 100)
-  {
-  	printf("Your number is between 1 and 100!");
+  scanf("%d",&x);
+  // the "/" operator returns the quotient of division if used with two int
+  quot = x / 100;
+   
+  switch(quot){
+    case 0:
+      printf("Your number is between 1 and 99");
+      break;
+    case 1:
+      printf("Your number is between 100 and 199");
+      break;
+    case 2:
+      printf("Your number is between 200 and 299");
+      break;
+    case 3:
+      printf("Your number is between 300 and 399");
+      break;
+    case 4:
+      printf("Your number is between 400 and 499");
+      break;
+    default:
+      printf("Your number was not in any of our ranges");
+      break;
   }
+  return 0; 
 
-  else if (input >= 101 && input <= 200)
-  {
-  	printf("Your number is between 101 and 200!");
-  }
-
-   else if (input >= 201 && input <= 300)
-  {
-  	printf("Your number is between 201 and 300!");
-  }
-
-   else if (input >= 301 && input <= 400)
-  {
-  	printf("Your number is between 301 and 400!");
-  }
-
-   else if (input >= 401 && input <= 500)
-  {
-  	printf("Your number is between 401 and 500!");
-  }
-
-  else
-  {
-  	printf("Your number was not in any of our ranges.");
-  }
-  return 0;
 }
