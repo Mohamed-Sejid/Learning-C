@@ -1,15 +1,13 @@
 #include <stdio.h>
 
-void hello(void);
+void function(void);
 
-int main(void)
-{
-	hello();
-
+int main(int argc, char** argv){
+	function();
 	return 0;
 }
 
-void hello(void)
-{
+void function(){
 	printf("Hello, World!\n");
+	return;
 }
