@@ -1,26 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//define structure
-struct struct_name
+struct data
 {
-	int integer;
-	char character;
-	float floatie;
-//give an instance of the structure the name 'example'
-} example;
+	int x;
+	float y;
+	char c;
+};
 
-int main (void)
-{
-	//use the . notation to refer to the members of the 'example' instance of the 'struct_name' struct
-	example.integer = 50;
-	example.character = 'W';
-	example.floatie = 3.14;
 
-	printf("This is the int: %d", example.integer);
-	printf(", this is the char: %c", example.character);
-	printf(", this is the float: %.2f\n", example.floatie);
-	
+int main(int argc, char** argv){
+	struct data test;
+
+	test.x= 20;
+	test.y= 0.5;
+	test.c= 'h';
+
+	printf("This is the int: %d, ths is the char: %c, this is the float: %f\n",test.x, test.c, test.y);
 	return 0;
-	
 }

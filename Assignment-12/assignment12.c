@@ -2,36 +2,28 @@
 #include <stdlib.h>
 #include <time.h>
 
-void main(void)
-{
-	//setting upper and lower range (1 = heads, 2 = tails)
-	int lower, upper;
-	lower = 1;
-	upper = 2;
-	srand(time(0)); //initializing randomization *once*
-	
-	//find out how many times to flip coin
-	int count;
-	printf("How many times would you like to flip the coin? ");
-	scanf("%d", &count);
+#define HEADS 0
+#define TAILS 1
+ 
+int main(int argc, char** argv){
+	int flips, coin;
+	int heads_count = 0, tails_count = 0; 
+	srand(time(NULL));
+	printf("How many times would you like to flip the coin?");
+	scanf("%d",&flips);
 
-	//flip coin and track results
-	int i, result; 
-	int heads = 0;
-	int tails = 0;
-	for (i = 0; i < count; i++) 
-	{
-		result = (rand() % (upper - lower + 1)) + lower;
-		if (result == 1) 
-		{
-			heads++;
-		}
-		else if (result == 2)
-		{
-			tails++;
+	for (int i=0; i<flips; i++){
+		coin = rand() % 2;
+		if (coin == HEADS){
+			heads_count++;
+		}else{
+			tails_count++;
 		}
 	}
 
-printf("After flipping the coin %d times, the results were\n%d heads\n%d tails\n", count, heads, tails);
+	printf("After flipping the coin %d times, the resuluts were \n",flips);
+	printf("%d heads \n",heads_count);
+	printf("%d tails\n", tails_count);
 
+	return 0;
 }
